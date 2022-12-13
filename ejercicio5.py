@@ -32,59 +32,27 @@ def recorrer_diagonal(cadena, rieles):
         for i in range(rieles-2, 0, -1):
             a[i,cont]=cadenax[cont].upper()
             cont+=1
-            if cont == len(cadenax):
-                return a
     else:
         return a
-
-# Luego colocamos la primera letra en el cuadrado superior izquierdo y avanzamos en diagonal hacia abajo donde están presentes las letras.
-cadena="holaquetal"
-rieles=3
-a=cuadricula(cadena, rieles)
-cont=0
-stop=len(cadena) // rieles - 1
-numx=len(cadena) % rieles
 
 def diagonal_completa(cadena, rieles):
     for j in range(0, len(cadena)):
         a= recorrer_diagonal(cadena, rieles)
     return a
 
-
+cadena="holque"
+rieles=3
 
 print(diagonal_completa(cadena, rieles))
 
+#Recorrer la matriz por filas y almacenar en una lista
+def codificada(cadena, rieles):
+    a=diagonal_completa(cadena, rieles)
+    encriptado=""
+    for i in range(0, rieles):
+        for j in range(0, len(a[0])):
+            if a[i,j] != "":
+                encriptado += a[i,j]
+    return encriptado
 
-
-
-
-
-
-
-# for j in range(0, len(cadena)):
-#     for i in range(0, rieles):
-#         a[i,cont]=cadena[cont].upper()
-#         cont+=1
-#         print(a)
-#         if cont == len(cadena)+1:
-#             sys.exit()
-#     for i in range(rieles-2, 0, -1):
-#         a[i,cont]=cadena[cont].upper()
-#         cont+=1
-#         if cont == len(cadena)+1:
-#             sys.exit()     
-# else:
-#     print(a)
-    
-
-
-
-
-
-
-
-
-
-
-
-
+print(codificada(cadena, rieles))
