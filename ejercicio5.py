@@ -1,4 +1,5 @@
 import numpy as np
+from ast import main
 
 def columna(cadena, rieles):
     for i in range(0, len(cadena)):
@@ -40,12 +41,8 @@ def diagonal_completa(cadena, rieles):
         a= recorrer_diagonal(cadena, rieles)
     return a
 
-cadena="holque"
-rieles=3
+print(diagonal_completa("holaquetal", 3))
 
-print(diagonal_completa(cadena, rieles))
-
-#Recorrer la matriz por filas y almacenar en una lista
 def codificada(cadena, rieles):
     a=diagonal_completa(cadena, rieles)
     encriptado=""
@@ -55,4 +52,22 @@ def codificada(cadena, rieles):
                 encriptado += a[i,j]
     return encriptado
 
-print(codificada(cadena, rieles))
+print(codificada("holaquetal", 3))
+
+def recorrer_diagonal(code, rieles):
+    cont=0
+    a, k =cuadricula(len(code), rieles)
+    for j in range(0, k+1):
+        for i in range(0, rieles):
+            a[i,cont]=a[cont].upper()
+            cont+=1
+            if cont == len(a):
+                return a
+        for i in range(rieles-2, 0, -1):
+            a[i,cont]=a[cont].upper()
+            cont+=1
+    else:
+        return a
+
+if __name__ == "__main__":
+    main()
